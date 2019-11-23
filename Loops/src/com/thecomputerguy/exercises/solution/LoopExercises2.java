@@ -9,8 +9,13 @@ public class LoopExercises2 {
 	 */
 
 	public static int reverseNum(int num) {
-		
-		return 0;
+		int revNum = 0; 
+		for(int i = num; i > 0; i/= 10) {
+			revNum += i%10;
+			revNum *= 10;
+		}
+		//System.out.println(revNum);
+		return revNum/10;
 	}
 
 	/**
@@ -18,7 +23,14 @@ public class LoopExercises2 {
 	 * countNumbers length(10) --> 2 length(0) --> 1 length(161) --> 3
 	 */
 	public static int length(int num) {
-		return 0;
+		int length = 0;
+		if(num == 0) {
+			return 1;
+		}
+		for(int i = num ; i>0; i /=10) {
+			length +=1;
+		}
+		return length;
 	}
 
 	/**
@@ -28,7 +40,24 @@ public class LoopExercises2 {
 	 * countNumbers(3456342234, 34) --> 3 countNumbers(12345, 12345) --> 1
 	 */
 	public static int countNumbers(int num, int pattern) {
-		return 0;
+		int lenNum = length(num);
+		int lenPattern = length(pattern);
+		//System.out.println(lenPattern);
+		int divNum = 1;
+		for(int i = 0; i<lenPattern; i++) {
+			divNum *= 10;
+		}
+		//System.out.println(divNum);
+		
+		int count = 0; 
+		for(int i =0; i < lenNum; i++) {
+			if(num % divNum == pattern) {
+				count += 1; 
+			}
+			num /= 10;
+		}
+		//System.out.println(count);
+		return count;
 	}
 
 	/**
@@ -38,6 +67,12 @@ public class LoopExercises2 {
 	 * CS") --> 3 countWords("IloveCS") --> 1 countWords("") --> 0
 	 */
 	public static int countWords(String phrase) {
-		return 0;
+		int noWords = 0;
+		for(int i =0; i < phrase.length()-1;i++) {
+			if(!Character.isSpaceChar(phrase.charAt(i)) && Character.isSpaceChar(phrase.charAt(i+1)) || (i == phrase.length()-2 && !Character.isSpaceChar(phrase.charAt(i))) ) {
+				noWords += 1;
+			}
+		}
+		return noWords;
 	}
 }
